@@ -1,10 +1,7 @@
-import { FC } from "react";
+import { FC } from 'react'
 
-
-const  Transactions: FC = () => {
-    return <div>Transactions</div>;
+const Transactions: FC = () => {
+  return <div>Transactions</div>
 }
 
-export default Transactions;
-
-
+export default Transactions

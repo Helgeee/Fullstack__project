@@ -1,33 +1,36 @@
-<Header class=" shadow-sm py-2">
-    <div class="container mx-auto grid grid-cols-2 gap-5 justify-between py-4">
-        <a href="#"> logo </a>
+<Header class="shadow-sm py-2">
+	<div class="container mx-auto grid grid-cols-2 gap-5 justify-between py-4">
+		<a href="#"> logo </a>
 
-        <nav *ngIf="isAuth else isNotAuth" class=" justify-end flex">
+		<nav *ngIf="isAuth; else isNotAuth" class="justify-end flex">
+			<ul class="flex gap-5 items-center">
+				<li class="text-white/50">
+					<a
+						routerLink=""
+						routerLinkActive="text-white"
+						[routerLinkActiveOptions]="{ exact: true }"
+						>Home</a
+					>
+				</li>
+				<li class="text-white/50">
+					<a routerLink="profile" routerLinkActive="text-white">Profile</a>
+				</li>
+				<li class="text-white/50">
+					<a routerLink="" routerLinkActive="text-white">Profile</a>
+				</li>
+				<li class="text-white/50">
+					<button class="flex">
+						<fa-icon [icon]="logoutIcon" class="text-white"></fa-icon>
+					</button>
+				</li>
+			</ul>
+		</nav>
 
-            <ul class="flex gap-5 items-center">
-                <li class="text-white/50">
-                    <a 
-                    routerLink=""routerLinkActive="text-white" [routerLinkActiveOptions]="{ exact: true }">Home</a>
-                </li>
-                <li class="text-white/50">
-                    <a routerLink="profile"  routerLinkActive="text-white" >Profile</a>
-                </li>
-                <li class="text-white/50">
-                    <a routerLink=""  routerLinkActive="text-white" >Profile</a>
-                </li>
-                <li class="text-white/50">
-                    <button class="flex">
-                        <fa-icon [icon]="logoutIcon" class="text-white"></fa-icon>
-                    </button>
-                </li>
-            </ul>
-        </nav>
-
-        <ng-template #isNotAuth>
-            <ul class="flex items-center gap-4 ml-auto">
-                <li><a routerLink="signup">Signup</a></li>
-                <li><a routerLink="login">Login</a></li>
-            </ul>
-        </ng-template>
-         </div>
+		<ng-template #isNotAuth>
+			<ul class="flex items-center gap-4 ml-auto">
+				<li><a routerLink="signup">Signup</a></li>
+				<li><a routerLink="login">Login</a></li>
+			</ul>
+		</ng-template>
+	</div>
 </Header>
