@@ -20,6 +20,3 @@ Server:
 - Tailwind CSS
 -
 -
-
-Выполнено по курсу:
-https://www.youtube.com/playlist?list=PLkUJHNMBzmtQj5qvTCqn0uMXFDG4ENiwf
