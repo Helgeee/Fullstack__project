@@ -1,12 +1,27 @@
-import { FC } from "react"
-import { Link, NavLink } from "react-router-dom"
-import { FaBtc, FaSignOutAlt } from "react-icons/fa"
+import { FC } from 'react'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { FaBtc, FaSignOutAlt } from 'react-icons/fa'
+import { useAuth } from '../hooks/useAuth'
+import { useAppDispatch } from '../store/hooks'
+import { removeTokenFromLocalStorage } from '../helpers/localstorage.helper'
+import { toast } from 'react-toastify'
+import { logout } from '../store/user/userSlice'
 
 const Header: FC = () => {
-	const isAuth = false
+	const isAuth = useAuth()
+	const dispatch = useAppDispatch()
+	const navigate = useNavigate()
+
+	const logoutHandler = async () => {
+		dispatch(logout())
+		removeTokenFromLocalStorage('token')
+		toast.success('Logged out successfully')
+		navigate('/')
+	}
+
 	return (
 		<header className="flex items-center bg-slate-800 px-4 py-2 shadow-sm backdrop-blur-sm">
-			<Link to="/">
+			<Link to="/" aria-label="Home">
 				<FaBtc size={20} />
 			</Link>
 			{/* Menu */}
@@ -15,9 +30,9 @@ const Header: FC = () => {
 					<ul className="flex items-center gap-5">
 						<li>
 							<NavLink
-								to={"/"}
+								to="/"
 								className={({ isActive }) =>
-									isActive ? "text-white" : "text-white/50"
+									isActive ? 'text-white' : 'text-white/50'
 								}
 							>
 								Home
@@ -25,19 +40,19 @@ const Header: FC = () => {
 						</li>
 						<li>
 							<NavLink
-								to={"/Transactions"}
+								to="/transactions"
 								className={({ isActive }) =>
-									isActive ? "text-white" : "text-white/50"
+									isActive ? 'text-white' : 'text-white/50'
 								}
 							>
-								Transaction
+								Transactions
 							</NavLink>
 						</li>
 						<li>
 							<NavLink
-								to={"/categories"}
+								to="/categories"
 								className={({ isActive }) =>
-									isActive ? "text-white" : "text-white/50"
+									isActive ? 'text-white' : 'text-white/50'
 								}
 							>
 								Categories
@@ -49,14 +64,19 @@ const Header: FC = () => {
 
 			{/* Actions */}
 			{isAuth ? (
-				<button className="btn btn-red">
+				<button
+					className="btn btn-red"
+					onClick={logoutHandler}
+					aria-label="Log Out"
+				>
 					<span>Log Out</span>
 					<FaSignOutAlt />
 				</button>
 			) : (
 				<Link
 					className="py-2 text-white/50 hover:text-white ml-auto mr-10"
-					to={"auth"}
+					to="/auth"
+					aria-label="Log In / Sign In"
 				>
 					Log In / Sign In
 				</Link>
@@ -64,5 +84,4 @@ const Header: FC = () => {
 		</header>
 	)
 }
-
 export default Header

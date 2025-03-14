@@ -18,5 +18,5 @@ Server:
 - TypeORM
 - PostgreSQL
 - Tailwind CSS
--
--
+- reduxjs/toolkit
+- react-redux
