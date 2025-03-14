@@ -18,5 +18,8 @@ Server:
 - TypeORM
 - PostgreSQL
 - Tailwind CSS
-- reduxjs/toolkit
-- react-redux
+-
+-
+
+Выполнено по курсу:
+https://www.youtube.com/playlist?list=PLkUJHNMBzmtQj5qvTCqn0uMXFDG4ENiwf
